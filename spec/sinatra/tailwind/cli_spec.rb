@@ -63,11 +63,27 @@ RSpec.describe Sinatra::Tailwind::CLI do
     before do
       allow(File).to receive(:exist?).and_return(false)
       allow(cli).to receive(:create_file)
+      allow(cli).to receive(:create_dev_script)
     end
 
     it "creates Procfile.dev when it doesn't exist" do
       cli.setup
       expect(cli).to have_received(:create_file).with("Procfile.dev", anything)
+    end
+
+    context "when setting up dev environment" do
+      it "creates both Procfile.dev and bin/dev script" do
+        cli.setup
+        expect(cli).to have_received(:create_file).with("Procfile.dev", anything)
+        expect(cli).to have_received(:create_dev_script)
+      end
+
+      it "displays setup completion message" do
+        cli.setup
+        expect(cli).to have_received(:say).with("\n✨ Development environment setup completed!", :green)
+        expect(cli).to have_received(:say).with("\n👉 To start your development server, run:", :blue)
+        expect(cli).to have_received(:say).with("  ./bin/dev", :cyan)
+      end
     end
 
     context "when Procfile.dev exists" do
