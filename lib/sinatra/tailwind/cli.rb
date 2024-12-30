@@ -72,10 +72,16 @@ module Sinatra
         if File.exist?("Procfile.dev")
           if yes?("\n⚠️  Procfile.dev already exists. Do you want to override it?", :yellow)
             create_procfile
+            create_dev_script
           end
         else
           create_procfile
+          create_dev_script
         end
+
+        say "\n✨ Development environment setup completed!", :green
+        say "\n👉 To start your development server, run:", :blue
+        say "  ./bin/dev", :cyan
       end
 
       private
@@ -89,20 +95,18 @@ module Sinatra
         say "\n📝 Creating Procfile.dev...", :blue
 
         content = <<~PROCFILE
-          web: bundle exec ruby app.rb -p ${PORT:-9292}
+          web: bundle exec rackup -p ${PORT:-9292}
           css: bundle exec tailwind watch
         PROCFILE
 
         create_file "Procfile.dev", content
 
-        say "\n✨ Procfile.dev created successfully!", :green
-        say "\n👉 To start your development server, run:", :blue
-        say "  foreman start -f Procfile.dev", :cyan
-
         if !system("which foreman > /dev/null 2>&1")
           say "\n⚠️  Note: You need to install foreman to use Procfile.dev", :yellow
           say "  Run: gem install foreman", :cyan
         end
+
+        say "✨ Procfile.dev created successfully!", :green
       end
     end
   end

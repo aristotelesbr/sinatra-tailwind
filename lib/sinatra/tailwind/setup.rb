@@ -115,6 +115,41 @@ module Sinatra
         log_info "⚙️  Added build script to package.json"
       end
 
+      def create_dev_script
+        bin_dir = "bin"
+        dev_script = "#{bin_dir}/dev"
+
+        FileUtils.mkdir_p(bin_dir)
+
+        content = <<~BASH
+          #!/usr/bin/env bash
+
+          if ! command -v foreman &> /dev/null; then
+            echo "Installing foreman..."
+            gem install foreman
+          fi
+
+          if ! command -v npm &> /dev/null; then
+            echo "Error: NPM is required but not installed."
+            echo "Please install Node.js and NPM first."
+            exit 1
+          fi
+
+          if [ ! -f "Procfile.dev" ]; then
+            echo "Error: Procfile.dev not found."
+            echo "Please run 'bundle exec tailwind setup' first."
+            exit 1
+          fi
+
+          foreman start -f Procfile.dev "$@"
+        BASH
+
+        File.write(dev_script, content)
+        FileUtils.chmod(0o755, dev_script)
+
+        log_info "📝 Created bin/dev script"
+      end
+
       private
 
       def log_info(message)
