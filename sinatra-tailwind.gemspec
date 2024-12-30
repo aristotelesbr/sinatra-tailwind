@@ -5,7 +5,7 @@ require_relative "lib/sinatra/tailwind/version"
 Gem::Specification.new do |spec|
   spec.name = "sinatra-tailwind"
   spec.version = Sinatra::Tailwind::VERSION
-  spec.summary = "Automated TailwindCSS integration for Sinatra applications"
+  spec.summary = "Zero-config TailwindCSS for Sinatra applications"
   spec.authors = ["Aristóteles"]
   spec.license = "MIT"
 

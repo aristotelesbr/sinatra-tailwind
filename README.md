@@ -1,21 +1,20 @@
 # Sinatra::Tailwind
 
-Seamlessly integrate TailwindCSS into your Sinatra applications with a streamlined development workflow.
+Simple TailwindCSS integration for Sinatra applications.
 
 ## Overview
 
-Sinatra::Tailwind bridges the elegance of Sinatra with the power of TailwindCSS, providing a cohesive development experience. This gem offers:
+Sinatra::Tailwind provides zero-configuration TailwindCSS setup for Sinatra applications. This gem offers:
 
-- 🚀 Quick setup with sensible defaults
-- 🔄 Live CSS reloading during development
-- 🛠 Production-ready CSS optimization
-- 📦 Zero configuration required
-- 🎨 Full access to TailwindCSS features
-- ⚡️ Optimized build process
+- 🚀 Instant setup with smart defaults
+- 🔄 Automatic CSS reloading
+- 🛠 Production-ready builds
+- 📦 Zero configuration
+- 🎨 Full TailwindCSS features
 
 ## Installation
 
-Add the gem to your Gemfile:
+Add to your Gemfile:
 
 ```ruby
 gem 'sinatra-tailwind'
@@ -25,95 +24,84 @@ Then run:
 
 ```bash
 bundle install
-```
-
-Or install directly via:
-
-```bash
-gem install sinatra-tailwind
-```
-
-## Quick Start
-
-1. Install TailwindCSS in your project:
-
-```bash
 bundle exec tailwind install
 ```
 
-2. Add the stylesheet to your layout:
+## Usage
+
+1. Add the stylesheet to your layout:
 
 ```erb
 <!-- views/layout.erb -->
 <link rel="stylesheet" href="/css/application.min.css">
 ```
 
-3. Start using TailwindCSS classes in your views:
+2. Use TailwindCSS in your views:
 
 ```erb
-<div class="container mx-auto px-4">
-  <h1 class="text-3xl font-bold text-gray-900">
-    Welcome to <%= @title %>
-  </h1>
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold">Hello World</h1>
 </div>
 ```
 
-## Development Workflow
+## Development
 
-Sinatra::Tailwind provides a seamless development experience:
-
-```bash
-# Start development server with live reloading
-foreman start -f Procfile.dev
-
-# Build optimized CSS for production
-bundle exec tailwind build
-```
-
-## Features
-
-### Live Reloading
-
-Changes to your views and CSS are automatically reflected in your browser, making development faster and more efficient.
-
-### Production Optimization
-
-When building for production, your CSS is automatically:
-
-- Minified for smaller file sizes
-- Purged of unused styles
-- Optimized for performance
-
-### Customization
-
-Need to customize TailwindCSS? The configuration is fully accessible:
+Start the development server:
 
 ```bash
-# Generate a tailwind.config.js file
-bundle exec tailwind setup
+./bin/dev
 ```
 
-## Best Practices
+Or manually:
 
-### Directory Structure
+```bash
+bundle exec tailwind watch  # Watch CSS changes
+bundle exec ruby app.rb     # Run Sinatra server
+```
 
-We recommend organizing your Sinatra application like this:
+## Commands
+
+```bash
+tailwind install  # Install TailwindCSS
+tailwind watch   # Watch for changes
+tailwind build   # Build for production
+tailwind setup   # Configure development
+```
+
+## Project Structure
 
 ```
 my-app/
 ├── app.rb
-├── Procfile.dev          # Development process manager
+├── Procfile.dev
+├── bin/
+│   └── dev
 ├── views/
-│   └── layout.erb       # Your main layout file
+│   └── layout.erb
 └── public/
     └── css/
-        ├── application.css     # Your source CSS
-        └── application.min.css # Generated CSS
+        ├── application.css
+        └── application.min.css
 ```
 
-### Examples
+## Configuration
 
-A typical Sinatra application using this gem:
+TailwindCSS configuration is available in `tailwind.config.js`:
+
+```js
+module.exports = {
+  content: [
+    './views/**/*.{erb,haml,slim}',
+    './public/**/*.{html,js}'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+## Example Application
 
 ```ruby
 # app.rb
@@ -137,8 +125,9 @@ end
 
 ## Contributing
 
-We welcome contributions! Please check our [Contributing Guide](CONTRIBUTING.md) for guidelines.
+Bug reports and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-This gem is available as open source under the terms of the [MIT License](LICENSE).
+[MIT License](LICENSE)
+
