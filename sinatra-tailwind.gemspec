@@ -25,13 +25,13 @@ Gem::Specification.new do |spec|
   spec.executables = ["tailwind"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "sinatra", "~> 3.0"
-  spec.add_dependency "json", "~> 2.6"
-  spec.add_dependency "thor", "~> 1.2"
+  spec.add_dependency "sinatra", "~> 4.1.1"
+  spec.add_dependency "json", "~> 2.9"
+  spec.add_dependency "thor", "~> 1.3.2"
   spec.add_dependency "tty-prompt", "~> 0.23.1"
 
-  spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "bundler", "~> 2.6"
+  spec.add_development_dependency "rake", "~> 13.2"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "standard", "~> 1.3"
 end
