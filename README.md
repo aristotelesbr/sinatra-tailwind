@@ -1,6 +1,9 @@
-# Sinatra::Tailwind
+<div align="center">
+  <h1>Sinatra::Tailwind</h1>
+  <p>Simple TailwindCSS integration for Sinatra applications.</p>
 
-Simple TailwindCSS integration for Sinatra applications.
+  <img src="logo.png" alt="Sinatra Tailwind" width="400">
+</div>
 
 ## Overview
 
@@ -90,10 +93,7 @@ TailwindCSS configuration is available in `tailwind.config.js`:
 
 ```js
 module.exports = {
-  content: [
-    './views/**/*.{erb,haml,slim}',
-    './public/**/*.{html,js}'
-  ],
+  content: ['./views/**/*.{erb,haml,slim}', './public/**/*.{html,js}'],
   theme: {
     extend: {},
   },
@@ -130,4 +130,3 @@ Bug reports and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md
 ## License
 
 [MIT License](LICENSE)
-

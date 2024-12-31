@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2024-12-29
+
+### Updated
+- Updated README with logo
+
 ## [0.2.0] - 2024-12-29
 ### Added
 - CLI commands for managing TailwindCSS installation and configuration:
