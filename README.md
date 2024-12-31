@@ -29,6 +29,26 @@ Then run:
 bundle install
 bundle exec tailwind install
 ```
+After that, you can start the development server:
+
+```bash
+🎨 Installing TailwindCSS for your Sinatra application...
+
+up to date, audited 122 packages in 739ms
+
+34 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+I, [2024-12-31T12:47:13.024163 #15794]  INFO -- : ⚙️  Added build script to package.json
+```
+
+If you want to setup a Procfile.dev for development, accept the prompt:
+
+```bash
+🤔 Would you like to setup a Procfile.dev for development? (y/n) (Y/n)
+🚀 Procfile.dev created successfully!
+```
 
 ## Usage
 
@@ -80,7 +100,7 @@ my-app/
 ├── bin/
 │   └── dev
 ├── views/
-│   └── layout.erb
+│   └── layout.erb -- Yoy need to add the stylesheet here
 └── public/
     └── css/
         ├── application.css
